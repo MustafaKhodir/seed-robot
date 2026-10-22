@@ -33,6 +33,7 @@ The TurtleBot3 Burger runs ROS2. My node subscribes to the laser scan and odomet
 
 - Three laser readings are checked each cycle: straight ahead, and 30 degrees off to each side.
 - If any of them is under 0.2 m the robot stops moving forward and turns on the spot (0.5 rad/s for straight ahead, 0.7 rad/s for the sides).
+- Safe stop: if no new laser scan has arrived for one second, the robot stops and waits until scans come back, so it never drives blind.
 - Otherwise it drives forward at 0.05 m/s.
 - The odometry comes from the wheel encoders, which give 4096 pulses per turn, so each pulse is 0.088 degrees of wheel movement.
 

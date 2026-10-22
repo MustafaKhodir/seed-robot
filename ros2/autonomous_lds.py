@@ -61,6 +61,8 @@ class MyRobot(Node):
         self.my_th = 0   # heading angle in degrees
         self.my_ls = LaserScan()      # latest laser scan
         self.obstacle_range = 0.2     # metres, anything closer than this is an obstacle
+        self.scan_timeout = 1.0       # seconds without a new scan before the robot stops
+        self.last_scan_time = None    # when the last scan arrived
         self.forward_speed = 0.05     # m/s
 
         # PID controller parameters
@@ -73,6 +75,7 @@ class MyRobot(Node):
     # Keeps the newest set of laser ranges
     def scan_callback(self, msg):
         self.my_ls.ranges = msg.ranges
+        self.last_scan_time = self.get_clock().now()
 
     # Keeps the newest position and converts the quaternion to a heading in degrees
     def odom_callback(self, msg):
@@ -88,13 +91,16 @@ class MyRobot(Node):
     def timer_callback(self):
         move = Twist()
 
-        # Nothing to decide until the first scan has arrived
-        if len(self.my_ls.ranges) == 0:
+        # Safe stop: if no fresh scan has come in for a second, the robot is
+        # driving blind, so stop until the laser comes back
+        if self.last_scan_time is None or \
+                (self.get_clock().now() - self.last_scan_time).nanoseconds / 1e9 > self.scan_timeout:
+            self.pub.publish(Twist())
             return
 
         front = self.my_ls.ranges[0]
-        side_a = self.my_ls.ranges[30]
-        side_b = self.my_ls.ranges[270]
+        side_a = self.my_ls.ranges[30]    # 30 degrees to one side
+        side_b = self.my_ls.ranges[330]   # 30 degrees to the other side
 
         if front < self.obstacle_range:
             # obstacle straight ahead, stop and turn
