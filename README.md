@@ -9,8 +9,8 @@ A small autonomous robot that drives around a field, avoids obstacles with a las
 The robot has three parts that work at the same time.
 
 - It drives forward on its own and uses the 360 degree laser distance sensor to spot anything closer than 0.2 m. If something is in the way it stops, turns on the spot until the path is clear, then carries on. It can also be driven by hand from the keyboard.
-- A servo inside the seed pot opens a gate to 65 degrees for 300 ms so a few seeds fall out, then closes it for 1.7 s. That gives one drop every 2 seconds while the robot is moving.
-- An IMU on the Arduino watches which way the robot is moving. A green LED comes on when it moves forward, a red LED when it reverses, and a yellow LED blinks every half second the whole time so people nearby know the robot is active.
+- A servo inside the seed pot opens a gate to 65 degrees for 300 ms so a few seeds fall out, then closes it for 1.7 s. That gives one drop every 2 seconds.
+- An IMU on the Arduino senses when the robot speeds up forwards or backwards. A green LED comes on when it moves forward, a red LED when it reverses, and a yellow LED blinks every half second the whole time so people nearby know the robot is active.
 
 I also mapped a simulated field with the robot in Gazebo using SLAM (Cartographer and RViz). The full map took about 3 minutes to build.
 
@@ -26,6 +26,48 @@ This was a solo build between October 2023 and April 2024. I did all of it:
 - Ran the project with Agile sprints in Jira and kept the code in GitLab.
 
 ## How it works
+
+### System overview
+
+```mermaid
+flowchart LR
+    subgraph TB[TurtleBot3 Burger]
+        LDS[360 degree laser scanner]
+        ODOM[Wheel encoders, odometry]
+        MOT[Wheel motors]
+    end
+    NODE[ROS2 node<br/>autonomous_lds.py]
+    LDS -- scan --> NODE
+    ODOM -- odom --> NODE
+    NODE -- cmd_vel --> MOT
+
+    subgraph ARD[Arduino Uno on top of the robot]
+        UNO[robot_status_lights.ino]
+    end
+    UNO -- pin 8 PWM --> SERVO[9g servo<br/>seed pot gate]
+    IMU[MPU6050 IMU] -- I2C on A4 and A5 --> UNO
+    UNO -- pins 11, 12, 13 --> LEDS[Green, red and<br/>yellow LEDs]
+```
+
+The ROS2 side and the Arduino side run independently. The ROS2 node drives the robot and avoids obstacles, while the Arduino drops seeds on a fixed timer and shows the robot's motion with the LEDs.
+
+### Wiring (Arduino Uno)
+
+| Part | Part pin | Arduino pin |
+| --- | --- | --- |
+| MPU6050 IMU | VCC | 5V |
+| MPU6050 IMU | GND | GND |
+| MPU6050 IMU | SDA | A4 (I2C data) |
+| MPU6050 IMU | SCL | A5 (I2C clock) |
+| 9g servo | Signal | Pin 8 |
+| 9g servo | Power | 5V |
+| 9g servo | Ground | GND |
+| Green LED | Anode | Pin 11 |
+| Red LED | Anode | Pin 12 |
+| Yellow LED | Anode | Pin 13 |
+| All three LEDs | Cathode | GND |
+| Arduino Uno | Power | USB while testing, TurtleBot supply when fitted |
+
 
 ### Driving and obstacle avoidance (ROS2)
 
@@ -47,7 +89,7 @@ A 9g micro servo sits in the bottom of the pot and works a small gate. The Ardui
 
 ### Status lights (Arduino)
 
-An MPU6050 IMU on the breadboard reads acceleration on three axes over I2C. The Y axis points along the robot. When the raw Y reading goes above 3000 the green LED comes on, and below minus 3000 the red one does. I picked 3000 after watching the readings in the Serial Plotter while pushing the robot. The yellow LED blinks on and off every 500 ms independently.
+An MPU6050 IMU on the breadboard reads acceleration on three axes over I2C. The Y axis points along the robot. When the raw Y reading goes above 3000 the green LED comes on, and below minus 3000 the red one does. The yellow LED blinks on and off every 500 ms on its own timer. The servo gate and the yellow LED both run on millis() timers rather than delay(), so the gate really opens every 2 seconds, the LED keeps its own rhythm, and the IMU is read on every pass of the loop.
 
 One thing changed from my first design. I started with two servos and six LEDs, and cut it down to one servo and three LEDs to save the TurtleBot's battery.
 
