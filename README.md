@@ -149,6 +149,18 @@ The source code is private. Selected parts are available to employers for techni
 
 ### The real robot
 
+**Full capstone demo.** The 90 second demo video from the end of the project: manual navigation, autonomous navigation in simulation and in real life, the 3D printed parts and the electronics. Real footage, sound off, with captions for what is on screen. Screens showing a terminal are blurred.
+
+https://github.com/user-attachments/assets/c37e527d-3f28-4c95-aecd-d630ef8a3281
+
+The same video is in the repo as [seed-capstone-demo.mp4](media/demo/seed-capstone-demo.mp4) (90 s).
+
+**My walk through of the robot.** Me showing the finished robot: the status LEDs, the seed dispenser with its servo, and the second printed pot. Real footage. My voice is muted and what I say is shown as captions.
+
+WALKTHROUGH_URL
+
+The same video is in the repo as [seed-robot-walkthrough.mp4](media/demo/seed-robot-walkthrough.mp4) (24 s).
+
 **Obstacle avoidance on the real TurtleBot.** The node driving the robot on its own past cardboard tubes, played at 2x.
 
 ![The real TurtleBot driving past cardboard tubes and turning away from them](media/demo/real-obstacle-avoidance.gif)
@@ -157,11 +169,11 @@ The source code is private. Selected parts are available to employers for techni
 
 ![The servo and the three status LEDs running on the breadboard](media/demo/real-servo-and-leds.gif)
 
-**Gazebo run.** The robot driving itself around the TurtleBot3 world in Gazebo, played at 8x.
+### Simulations of my code
+
+**Gazebo run (simulation).** The robot driving itself around the TurtleBot3 world in Gazebo, played at 8x.
 
 ![The robot driving itself around the TurtleBot3 world in Gazebo](media/demo/gazebo-run.gif)
-
-### Simulations of my code
 
 **Obstacle avoidance (simulation).** autonomous_lds.py running unchanged in a 2D copy of the TurtleBot3 world, five minutes at 8x speed with no collisions in this simulated run. This is a 2D simulator with a laser model, not Gazebo.
 
@@ -184,12 +196,6 @@ The same video is in the repo as [seed-robot-demo.mp4](media/demo/seed-robot-dem
 <img src="media/photos/robot-in-arena-top-view.jpg" width="260" alt="Top view of the robot in the test area"> <img src="media/figures/navigation-architecture-sketch.jpg" width="260" alt="My hand drawn navigation architecture for the TurtleBot3"> <img src="media/figures/turtlebot-movement-sketch.jpg" width="260" alt="My hand drawn sketch of how the TurtleBot3 turns and drives">
 
 The seed pot is in `media/cad/seed-pot.stl`. GitHub opens it in a 3D viewer.
-
-**Full capstone demo.** The 90 second demo video from the end of the project: manual navigation, autonomous navigation in simulation and in real life, the 3D printed parts and the electronics. Real footage.
-
-https://github.com/user-attachments/assets/c37e527d-3f28-4c95-aecd-d630ef8a3281
-
-The same video is in the repo as [seed-capstone-demo.mp4](media/demo/seed-capstone-demo.mp4) (90 s).
 
 The full project report is available on request.
 
