@@ -1,3 +1,5 @@
+<sub>Copyright 2026 Mustafa Khodir. All rights reserved. Photos, videos and designs may not be reused without permission.</sub>
+
 # Hybrid-Controlled Seed-Dispensing Robot
 
 A small autonomous robot that drives around a field, avoids obstacles with a laser scanner, and drops seeds from a 3D printed pot every two seconds. It runs on a TurtleBot3 Burger with ROS2 for the driving and an Arduino Uno for the seed gate and the status lights.
@@ -132,10 +134,11 @@ Odometry error got worse every time the robot rotated, and the encoders picked u
 
 ## Source code
 
-The full source code is kept in a private repository. To review it, [email me](mailto:mkhodir77@gmail.com?subject=Code%20access%3A%20seed-robot) with your name, company and GitHub username, and I will give you read access.
+The source code is private. Selected parts are available to employers for technical review. Contact me at [mkhodir77@gmail.com](mailto:mkhodir77@gmail.com).
 
 ## What's in this repo
 
+- `outline/` outline files for the main programs: function names, structure and comments only. The working logic is in the private repository.
 - `media/photos/` photos of the build.
 - `media/cad/` the seed pot as an STL file.
 - `media/figures/` the circuit, the CAD stages, the simulation and the LED readings.
@@ -153,10 +156,6 @@ The full source code is kept in a private repository. To review it, [email me](m
 **Seed gate servo and status lights.** The 9g servo working the gate with the LEDs running on the breadboard.
 
 ![The servo and the three status LEDs running on the breadboard](media/demo/real-servo-and-leds.gif)
-
-**First gate prototype.** An early cardboard mock up of the gate, turned by the servo, before the printed pot.
-
-![Cardboard gate mock up turned by the servo](media/demo/gate-prototype.gif)
 
 **Gazebo run.** The robot driving itself around the TurtleBot3 world in Gazebo, played at 8x.
 
@@ -194,4 +193,4 @@ The same video is in the repo as [seed-capstone-demo.mp4](media/demo/seed-capsto
 
 The full project report is available on request.
 
-Copyright 2026 Mustafa Khodir. All rights reserved.
+Copyright 2026 Mustafa Khodir. All rights reserved. Photos, videos and designs may not be reused without permission.
