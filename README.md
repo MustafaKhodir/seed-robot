@@ -151,13 +151,13 @@ The source code is private. Selected parts are available to employers for techni
 
 **Full capstone demo.** The 90 second demo video from the end of the project: manual navigation, autonomous navigation in simulation and in real life, the 3D printed parts and the electronics. Real footage, sound off, with captions for what is on screen. Screens showing a terminal are blurred.
 
-https://github.com/user-attachments/assets/c37e527d-3f28-4c95-aecd-d630ef8a3281
+https://github.com/user-attachments/assets/4fb265f4-9286-421d-b378-0bda71946d2e
 
 The same video is in the repo as [seed-capstone-demo.mp4](media/demo/seed-capstone-demo.mp4) (90 s).
 
 **My walk through of the robot.** Me showing the finished robot: the status LEDs, the seed dispenser with its servo, and the second printed pot. Real footage. My voice is muted and what I say is shown as captions.
 
-WALKTHROUGH_URL
+https://github.com/user-attachments/assets/ccb43741-f781-4cd4-a51b-65ab44110027
 
 The same video is in the repo as [seed-robot-walkthrough.mp4](media/demo/seed-robot-walkthrough.mp4) (24 s).
 
