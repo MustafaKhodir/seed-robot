@@ -17,11 +17,11 @@
 // neither one holds up the other and the IMU is read on every pass of the loop.
 //
 // Wiring (Arduino Uno):
-//   MPU6050 VCC -> 5V, GND -> GND, SDA -> A4, SCL -> A5
-//   Red LED    -> pin 12
-//   Yellow LED -> pin 13
-//   Green LED  -> pin 11
-//   Servo signal -> pin 8, servo power from 5V and GND
+//   MPU6050 VCC to 5V, GND to GND, SDA to A4, SCL to A5
+//   Red LED on pin 12
+//   Yellow LED on pin 13
+//   Green LED on pin 11
+//   Servo signal on pin 8, servo power from 5V and GND
 //
 // Library: "MPU6050" (the one that gives you mpu.initialize() and
 // mpu.getAcceleration), installed through the Arduino Library Manager.
@@ -30,7 +30,7 @@
 #include <MPU6050.h>
 #include <Servo.h>
 
-Servo myservo;  // Creates a servo object to control the motor
+Servo myservo;  // Servo that opens and closes the seed gate
 MPU6050 mpu;
 
 // LED and servo pins
@@ -52,7 +52,7 @@ const unsigned long blinkTime = 500;    // ms on, then ms off
 // forwards, below the negative of it means accelerating backwards
 const int moveThreshold = 3000;
 
-// timers for the non blocking parts
+// Timers and states for the non blocking parts
 unsigned long lastServoChange = 0;
 bool gateOpen = false;
 unsigned long lastBlinkChange = 0;
@@ -65,5 +65,5 @@ void loop() { /* removed */ }
 // Seed dispensing: 300 ms open, 1700 ms closed, repeated
 void controlMotor() { /* removed */ }
 
-// Yellow LED blinks 0.5 second on, 0.5 second off
+// Yellow LED blinks 0.5 seconds on, 0.5 seconds off
 void blinkYellow() { /* removed */ }
