@@ -9,6 +9,10 @@ from geometry_msgs.msg import Twist
 from nav_msgs.msg import Odometry
 from sensor_msgs.msg import LaserScan
 
+# A range reading for the terminal, or 'none' when the beam was unusable
+def format_reading(reading):
+    ...
+
 class PIDController:
 
     # Standard PID for smoothing the forward speed. See the note in

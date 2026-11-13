@@ -30,7 +30,7 @@
 #include <MPU6050.h>
 #include <Servo.h>
 
-Servo myservo;  // Servo that opens and closes the seed gate
+Servo gateServo;  // Servo that opens and closes the seed gate
 MPU6050 mpu;
 
 // LED and servo pins
@@ -42,11 +42,13 @@ const int servoPin = 8;
 // Servo positions and timing (2 second dispense cycle)
 const int openAngle = 65;
 const int closedAngle = 0;
-const unsigned long openTime = 300;     // ms the gate stays open
-const unsigned long closedTime = 1700;  // ms the gate stays closed
+const unsigned long gateOpenMs = 300;     // ms the gate stays open
+const unsigned long gateClosedMs = 1700;  // ms the gate stays closed
 
 // Yellow LED blink timing
-const unsigned long blinkTime = 500;    // ms on, then ms off
+const unsigned long blinkMs = 500;        // ms on, then ms off
+
+const unsigned long serialBaud = 9600;
 
 // Raw accelerometer reading on the Y axis above this means accelerating
 // forwards, below the negative of it means accelerating backwards
