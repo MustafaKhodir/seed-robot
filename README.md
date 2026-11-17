@@ -78,7 +78,7 @@ The TurtleBot3 Burger runs ROS2. My node subscribes to the laser scan and odomet
 - Safe stop: if no new laser scan has arrived for one second, the robot stops and waits until scans come back, so it never drives blind.
 - The odometry comes from the wheel encoders, which give 4096 pulses per turn, so each pulse is 0.088 degrees of wheel movement.
 
-The node also has a PID controller class (gains 1.0, 0.1 and 0.01). It runs every cycle and is ready to drive the forward speed, which I kept fixed during testing.
+The node also has a PID controller class (gains 1.0, 0.1 and 0.01). It runs every cycle, but PID speed control was not used in the tested runs; the forward speed was fixed.
 
 My first driving test was a 1 m square using odometry only. Each corner adds up how far the robot has turned since that corner started and stops at 90 degrees, so no corner can be cut short or skipped. I wrote it as its own node, `square_path.py`.
 
@@ -96,7 +96,7 @@ One thing changed from my first design. I started with two servos and six LEDs, 
 
 *Final build: one servo, three LEDs and the MPU6050, drawn from the pins in robot_status_lights.ino.*
 
-I ran the LEDs without series resistors during testing, because 220 ohm resistors made them too dim to see across the lab. For a permanent build I would fit lower value resistors to protect the Arduino pins.
+I ran the LEDs without series resistors during testing, because 220 ohm resistors made them too dim to see across the lab. For a permanent build I would pick series resistors from the LED's forward voltage and rated current and the Arduino pin limit.
 
 ![First circuit design in TinkerCAD, with two servos and six LEDs](media/figures/circuit-tinkercad.png)
 
