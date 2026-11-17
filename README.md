@@ -110,18 +110,6 @@ I ran the LEDs without series resistors during testing, because 220 ohm resistor
 
 The pot is two shapes joined together: a box on top, 70 by 55 by 32.5 mm, and a tapered section underneath that narrows to 50.5 by 35.5 mm over 30 mm of height. That gives a total capacity of 207,865 cubic mm. Testing the first prototypes showed me the seeds needed a wider path through the opening, which is what led to the tapered shape and the servo gate.
 
-![Sketch of the seed pot base in SolidWorks, 55 by 65 mm](media/figures/seed-pot-sketch.png)
-
-*Starting sketch for the pot in SolidWorks.*
-
-![Inside of the seed pot model, showing the slot for the servo](media/figures/seed-pot-inside.png)
-
-*Inside the pot, with the slot that holds the servo.*
-
-![Final seed pot model with the tapered lower section](media/figures/seed-pot-final-model.png)
-
-*The finished model, box on top and tapered section below.*
-
 ![The printed seed pot next to the breadboard](media/photos/seed-pot-printed.jpg)
 
 *The printed pot.*
@@ -153,12 +141,6 @@ https://github.com/user-attachments/assets/3eb560ab-909e-4b06-bbe9-c316b189cb08
 
 The same video is in the repo as [seed-capstone-demo.mp4](media/demo/seed-capstone-demo.mp4) (99 s).
 
-**My walk through of the robot.** Me showing the finished robot: the status LEDs, the seed dispenser with its servo, and the second printed pot. Real footage, with what I say shown as captions.
-
-https://github.com/user-attachments/assets/a6e4fb87-04c2-4ae1-bb9d-02cc71990e81
-
-The same video is in the repo as [seed-robot-walkthrough.mp4](media/demo/seed-robot-walkthrough.mp4) (34 s).
-
 **Obstacle avoidance on the real TurtleBot.** The node driving the robot on its own past cardboard tubes, played at 2x.
 
 ![The real TurtleBot driving past cardboard tubes and turning away from them](media/demo/real-obstacle-avoidance.gif)
@@ -180,12 +162,6 @@ The same video is in the repo as [seed-robot-walkthrough.mp4](media/demo/seed-ro
 **Seed gate and status lights (simulation).** robot_status_lights.ino compiled for a PC with a simulated clock, showing the gate opening for 300 ms every 2 seconds and the yellow LED blinking every 500 ms. The IMU values are test inputs, not recorded data.
 
 ![Simulated LEDs and servo gate with a timeline of the sketch outputs](media/demo/arduino-sketch-sim.gif)
-
-Both with captions:
-
-https://github.com/user-attachments/assets/23180e2a-41df-4b9c-810b-e7237d245c8a
-
-The same video is in the repo as [seed-robot-demo.mp4](media/demo/seed-robot-demo.mp4) (60 s).
 
 ### Photos
 
