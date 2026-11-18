@@ -139,8 +139,6 @@ The source code is private. Selected parts are available to employers for techni
 
 https://github.com/user-attachments/assets/3eb560ab-909e-4b06-bbe9-c316b189cb08
 
-The same video is in the repo as [seed-capstone-demo.mp4](media/demo/seed-capstone-demo.mp4) (99 s).
-
 **Obstacle avoidance on the real TurtleBot.** The node driving the robot on its own past cardboard tubes, played at 2x.
 
 ![The real TurtleBot driving past cardboard tubes and turning away from them](media/demo/real-obstacle-avoidance.gif)
